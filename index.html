@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sentence Translator</h1>
+        <form action="/translate" method="POST">
+            <textarea name="sentence" placeholder="Enter sentence to translate" required></textarea><br>
+
+            <!-- Using radio buttons to select one translation direction -->
+            <div class="radio-container">
+                <label>
+                    <input type="radio" name="direction" value="english_to_hindi" checked> English to Hindi
+                </label><br>
+                <label>
+                    <input type="radio" name="direction" value="hindi_to_english"> Hindi to English
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Translate</button>
+        </form>
+
+        {% if translated_text %}
+        <div class="translated-text">
+            <h3>Translated Text:</h3>
+            <p>{{ translated_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
